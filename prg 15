@@ -1,0 +1,38 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+# Assume 'customer_data' is a Pandas DataFrame containing customer information,
+# including a column named 'Age'.
+# Replace this with your actual DataFrame loading
+customer_data = pd.DataFrame({
+    'CustomerID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Age': [25, 32, 45, 28, 35, 50, 22, 30, 40, 29],
+    'PurchaseAmount': [50, 75, 120, 60, 90, 150, 40, 80, 110, 65],
+    'PurchaseMonth': ['Jan', 'Feb', 'Mar', 'Jan', 'Feb', 'Mar', 'Jan', 'Feb', 'Mar', 'Jan']
+})
+
+# Filter data for the past month (assuming past month is 'Mar' for this example)
+past_month_data = customer_data[customer_data['PurchaseMonth'] == 'Mar']
+
+# Check if there is any data for the past month
+if not past_month_data.empty:
+    # Extract the 'Age' column from the past month's data
+    customer_ages = past_month_data['Age']
+
+    # Calculate the frequency distribution of ages
+    age_frequency = customer_ages.value_counts().sort_index()
+
+    # Print the frequency distribution
+    print("Frequency Distribution of Customer Ages for the Past Month:")
+    print(age_frequency)
+
+    # You can also visualize the frequency distribution using a histogram
+    plt.figure(figsize=(10, 6))
+    plt.hist(customer_ages, bins=range(min(customer_ages), max(customer_ages) + 2), rwidth=0.8)
+    plt.xlabel('Age')
+    plt.ylabel('Frequency')
+    plt.title('Distribution of Customer Ages for the Past Month')
+    plt.xticks(range(min(customer_ages), max(customer_ages) + 1))
+    plt.grid(axis='y')
+    plt.show()
+else:
+    print("No purchase data available for the past month.")
