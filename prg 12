@@ -1,0 +1,27 @@
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+# Sample data (replace with your actual data)
+data = {'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        'Temperature': [5, 6, 10, 15, 20, 25, 28, 27, 22, 16, 10, 6],
+        'Rainfall': [50, 45, 60, 70, 55, 40, 30, 35, 65, 80, 90, 75]}
+df = pd.DataFrame(data)
+
+# Line plot of temperature
+plt.figure(figsize=(8, 6))
+plt.plot(df['Month'], df['Temperature'], marker='o', linestyle='-')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°C)')
+plt.title('Monthly Temperature Trend')
+plt.grid(True)
+plt.show()
+
+# Scatter plot of rainfall
+plt.figure(figsize=(8, 6))
+plt.scatter(df['Month'], df['Rainfall'], color='green')
+plt.xlabel('Month')
+plt.ylabel('Rainfall (mm)')
+plt.title('Monthly Rainfall')
+plt.grid(True)
+plt.show()
